@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="TP-S6-P14-Web-design-Mai-2022" />
+        <module name="TP-S6-P14-Web-design-Mai-2023" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +18,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="TP S6 P14 Web design Mai 2022" options="-parameters" />
       <module name="TP-S6-P14-Web-design-Mai-2022" options="-parameters" />
+      <module name="TP-S6-P14-Web-design-Mai-2023" options="-parameters" />
     </option>
   </component>
 </project>
