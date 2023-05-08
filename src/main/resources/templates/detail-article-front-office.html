@@ -83,7 +83,7 @@
                     <div class="row mb-5">
                         <div class="col-md-12 col-lg-12 mb-3">
                             <div class="card h-100">
-                                <img class="card-img-top" th:src="${article.getImageShowableInHtml()}" th:alt="${article.getTitre()}" style="width: 75rem; height:30rem"/>
+                                <img class="card-img-top" width="100px" height="300px" th:src="${article.getImageShowableInHtml()}" th:alt="${article.getTitre()}" />
                                 <div class="card-body">
                                     <h1 class="card-title" style="font-size: 150%; color: blue;" th:text="${article.getTitre()}" />
                                     <h2 class="card-text" style="font-size: 100%" th:text="${article.getResume()}" />
