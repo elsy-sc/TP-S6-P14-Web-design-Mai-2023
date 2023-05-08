@@ -22,7 +22,6 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico"/>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -44,7 +43,7 @@
     <link rel="stylesheet" href="../assets/css/demo.css"/>
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
+
     <!-- Page CSS -->
 
     <!-- Helpers -->
@@ -53,268 +52,8 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../assets/js/config.js"></script>-->
     <script src="../assets/ckeditor/ckeditor.js"></script>
+
 </head>
-
-
-<!-- Modal -->
-<div class="modal fade" id="addModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel2">Créer une catégorie</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        onclick="window.location.reload()"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div id="messageAdd"></div>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="libelleAdd" class="form-label">Libellé</label>
-                            <input type="text" name="libelle" id="libelleAdd" required="" class="form-control"
-                                   placeholder=""/>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label" for="descriptionAdd">Description</label>
-                        <textarea
-                                name="description"
-                                id="descriptionAdd"
-                                class="form-control"
-                                placeholder=""
-                        ></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="creerCategorie()" class="btn btn-primary">Créer</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editModal" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel5">Modifier une catégorie</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        onclick="window.location.reload()"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <div id="messageEdit"></div>
-                    <input type="text" hidden="" id="idEdit" class="form-control" required/>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <label for="libelleEdit" class="form-label">Libellé</label>
-                            <input type="text" id="libelleEdit" class="form-control" required placeholder=""/>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label" for="descriptionEdit">Description</label>
-                        <textarea
-                                id="descriptionEdit"
-                                class="form-control"
-                                placeholder=""
-                        ></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" onclick="modifierCategorie()" class="btn btn-primary">Modifier</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="deleteModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel6">Suppréssion de catégorie</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form action="/categorie/supprimer" method="post">
-                    <input hidden="" name="redirect"
-                           value="/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle-.php?succ_suppr">
-                    <input type="text" name="id" hidden="" id="idDelete" class="form-control" required/>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <div class="alert alert-danger" id="confirmation-Delete" role="alert"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                        <button type="submit" class="btn btn-danger">Oui</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="deleteModal-Article" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel4">Suppréssion d'un article</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form action="/article/supprimer-article.php" method="post">
-                    <input type="text" name="id" hidden="" id="idDelete-Article" class="form-control" required/>
-                    <div class="row">
-                        <div class="col mb-3">
-                            <div class="alert alert-danger" id="confirmation-Delete-Article" role="alert"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Non</button>
-                        <button type="submit" class="btn btn-danger">Oui</button>
-                    </div>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editModal-Article" data-bs-backdrop="static" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel3">Modifier une article</h5>
-                <button
-                        type="button"
-                        class="btn-close"
-                        onclick="window.location.reload()"
-                        aria-label="Close"
-                ></button>
-            </div>
-            <div class="modal-body">
-                <form action="/article/modifier-article.php" method="post" enctype="multipart/form-data">
-                    <input type="text" hidden="" name="id" id="idEdit-Article">
-                    <div class="mb-3">
-                        <label class="form-label" required
-                               for="titreEdit-Article">Titre</label>
-                        <input type="text" class="form-control" id="titreEdit-Article"
-                               placeholder="" required="" name="titre"/>
-                    </div>
-
-                    <label class="form-label">Catégorie</label>
-                    <div class="row mb-3">
-                        <div class="dropdown col-10">
-                            <input type="hidden" name="idcategorie" id="selected-option" value="">
-                            <button class="btn btn-outline-secondary w-100 text-start select-button"
-                                    type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                Aucune catégorie <span class="float-end"><i
-                                    class="bx bx-chevron-down"></i></span>
-                            </button>
-                            <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#"
-                                   onclick="setOption('Aucune catégorie', '')">Aucune
-                                    catégorie</a>
-                                <div class="row" th:each="categorie : ${listecategorie}">
-                                    <div class="col">
-                                        <a class="dropdown-item" href="#"
-                                           th:onclick="setOption([[${categorie.libelle}]], [[${categorie.id}]])"
-                                        > [[${categorie.libelle}]] </a>
-                                    </div>
-                                    <div class="col-auto">
-                                        <button class="float-end btn btn-outline-danger mx-1 delete-button"
-                                                type="button"
-                                                data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                th:data-id="${categorie.id}"
-                                                th:data-libelle="${categorie.libelle}"
-                                        >
-                                            <i
-                                                    class="bx bx-trash"></i></button>
-                                        <button class="float-end btn btn-outline-success edit-button"
-                                                type="button"
-                                                data-bs-toggle="modal" data-bs-target="#editModal"
-                                                th:data-id="${categorie.id}"
-                                                th:data-description="${categorie.description}"
-                                                th:data-libelle="${categorie.libelle}"><i
-                                                class="bx bx-edit"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <button class="btn btn-outline-primary" type="button"
-                                    data-bs-toggle="modal" data-bs-target="#addModal">
-                                +
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label" for="resumeEdit-Article">Résumé</label>
-                        <textarea
-                                id="resumeEdit-Article"
-                                class="form-control"
-                                placeholder=""
-                                name="resume"
-                        ></textarea>
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label" for="imageEdit-Article">Image</label>
-                        <input
-                                type="file"
-                                id="imageEdit-Article"
-                                class="form-control"
-                                name="file"
-                                accept="image/*"
-                        />
-                        <img id="preview" src="#" class="card-img-top" alt="Image consernant intelligence artificielle" style="width: 30rem; height:23rem">
-                    </div>
-
-                    <div class="mb-3">
-                        <label class="form-label" for="contenuEditArticle">Contenu</label>
-                        <textarea
-                                id="contenuEditArticle"
-                                class="form-control ckeditor"
-                                name="contenu"
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary">Modifier</button>
-                </form>
-            </div>
-
-        </div>
-    </div>
-</div>
-<!-- /Modal -->
-
 
 <body>
 <!-- Layout wrapper -->
@@ -379,18 +118,6 @@
                 <!-- Content -->
 
                 <div class="container-xxl flex-grow-1 container-p-y">
-
-                    <div class="alert alert-success close-alert" role="alert" th:if="${param.succ_article_modif != null}">
-                        Article créée avec succès !
-                    </div>
-
-                    <div class="alert alert-success close-alert" role="alert" th:if="${param.succ_suppr != null}">
-                        Catégorie supprimé avec succès !
-                    </div>
-                    <div class="alert alert-success close-alert" role="alert"
-                         th:if="${param.succ_article_suppr != null}">
-                        Article supprimé avec succès !
-                    </div>
                     <h1 class="fw-bold py-3 mb-4" style="color: blue;font-size: 200%">Intelligence Actu' ficielle -
                         Liste des articles</h1>
                     <div class="row mb-5">
@@ -427,7 +154,6 @@
 <script src="../assets/vendor/libs/jquery/jquery.js"></script>
 <script src="../assets/vendor/libs/popper/popper.js"></script>
 <script src="../assets/vendor/js/bootstrap.js"></script>
-<script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
 
 <script src="../assets/vendor/js/menu.js"></script>
 <!-- endbuild -->
@@ -442,41 +168,6 @@
 
 <!-- Place this tag in your head or just before your close body tag. -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
-<script>
-    $('#imageEdit-Article').on('change', function () {
-        var file = this.files[0];
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('#preview').attr('src', e.target.result);
-            var element = document.getElementById("preview");
-            element.style.height = "20rem";
-            element.style.width = "20rem";
-        }
-        reader.readAsDataURL(file);
-    });
-
-
-    setTimeout(function () {
-        var alert = document.querySelector('.close-alert');
-        if (alert != null) {
-            alert.classList.add("d-none");
-        }
-    }, 2000);
-
-    function setOption(option, value) {
-        document.querySelector('#selected-option').value = value;
-        document.querySelector('.select-button').innerHTML = option + '<span class="float-end"><i class="bx bx-chevron-down"></i></span>';
-    }
-
-
-
-
-
-
-
-
-
-</script>
 
 </body>
 </html>
