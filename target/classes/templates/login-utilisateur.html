@@ -145,6 +145,10 @@
           alert.classList.add("d-none");
         }
       }, 2000);
+
+      if (localStorage.getItem("id") !== null && localStorage.getItem("id") !== "") {
+        location.replace("/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle-.php");
+      }
     </script>
 
   </body>
