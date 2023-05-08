@@ -117,7 +117,7 @@ public class ArticleController {
     public ModelAndView supprimer(ModelAndView mv, Article article)throws Exception{
         Connection connection = dataSource.getConnection();
         article.delete(connection, null);
-        mv.setViewName("redirect:/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle.php?succ_article_suppr");
+        mv.setViewName("redirect:/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle-.php?succ_article_suppr");
         connection.close();
         return mv;
     }
@@ -130,7 +130,7 @@ public class ArticleController {
         }
         article.update(connection, new String[]{"id"},null);
         connection.close();
-        mv.setViewName("redirect:/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle.php?succ_article_modif");
+        mv.setViewName("redirect:/article/liste-des-articles-sur-les-informations-de-lintelligence-artificielle-.php?succ_article_modif");
         return mv;
     }
 
